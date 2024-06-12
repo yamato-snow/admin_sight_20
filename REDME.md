@@ -11,6 +11,25 @@
 
 ### デプロイ
 
+## 前提条件
+- Gitがインストールされていること。
+- pyenvがインストールされていること。
+
+## プロジェクトの構成
+```
+C:.
+│  .gitignore
+│  README.md
+│  requirements.txt
+│
+├─project
+│      README.md
+│      requirements.txt
+│
+└─tests
+        test.py
+```
+
 ## 2. 実行手順
 このツールを使用するためには、以下の手順に従ってください。
 
@@ -56,26 +75,88 @@
     python -m pip install -r requirements.txt
     ```
 
-## 3. 
-- email: リベシティのサイトにログインするためのメールアドレス
-- password: リベシティのサイトにログインするためのパスワード
-- login_url: ログインページのURL
-- category_url: カテゴリページのURL
-
-### 2.2. スクレイピングの実行
-1. スクリプトファイルが保存されたディレクトリで、コマンドプロンプトを開きます。
-2. URL取得スクリプトを実行するために以下のコマンドを入力します。
-    
-    ```bash
-    python analysis_project\main.py
+    ※Pillowでエラーが出た場合は、仮想環境を一旦出た後で以下のコマンドでインストールしてください。
+    ```
+    brew install libjpeg zlib libtiff
     ```
 
-3. パスワードとユーザー名とURLがconfig.txtより入力され、リベシティのサイトにログインし、URLを抽出します。
-4. URLはwordCloud_project\読み込みファイル\title.txtに出力されます。
-5. wordCloud_project\analyze_WordCloud_view.pyを実行します。
-    
-    ```bash
-    python wordCloud_project\analyze_WordCloud_view.py
+## 3. Djangoのセットアップ（1回目のみ実行）
+※この手順は、実行の必要はありません（クローン時にインプット出来ているため）
+
+## 実行手順
+
+1. **プロジェクトのクローン**
+
+    まず、このプロジェクトをあなたのローカルシステムにクローンします。
+    ```
+    git clone https://github.com/yamato-snow/admin_sight_20 admin_sight_20
     ```
 
-6. URLから分析を行い、分析が完了すると"wordcloud.png"が生成されます。
+    クローンしたディレクトリに移動します。
+    ```
+    cd admin_sight_20
+    ```
+
+2. **ディレクトリの移動**
+
+    プロジェクトのルートディレクトリに移動します。
+    ```
+    cd admin_sight_20
+    ```
+
+3. **ブランチを作成**
+    
+    自身の作業用ブランチを作成します。
+    ```
+    git branch <ブランチ名>
+    ```
+    ※ブランチ名は、自分の名前で作成してください。
+    
+    作成したブランチに移動します。
+    ```
+    git checkout <ブランチ名>
+    ```
+
+    ※ブランチを移動したか確認する場合は、次のコマンドを実行します。
+
+    ```
+    git branch
+    ```
+    ※現在のブランチが緑色で表示されます。
+
+4. **リモートリポジトリにプッシュ**
+
+    リポジトリの変更をプッシュします。
+    ```
+    git push -u origin <ブランチ名>
+    ```
+
+## ※補足１：各種コマンド
+
+1. **Djangoコマンド**
+
+    Djangoプロジェクトの作成(※githubからクローンした場合は不要)
+    ```
+    django-admin startproject config .
+    ```
+
+    Djangoアプリケーションの作成
+    ```
+    python manage.py startapp <アプリ名>
+    ```
+
+    Djangoのマイグレーション
+    ```
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+    Djangoのスーパーユーザー作成
+    ```
+    python manage.py createsuperuser
+    ```
+
+    Djangoの開発サーバー起動
+    ```
+    python manage.py runserver 0.0.0.0:8000
+    ```
