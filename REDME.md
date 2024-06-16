@@ -17,17 +17,16 @@
 
 ## プロジェクトの構成
 ```
-C:.
-│  .gitignore
-│  README.md
-│  requirements.txt
-│
-├─project
-│      README.md
-│      requirements.txt
-│
-└─tests
-        test.py
+admin_sight_20
+├── ./REDME.md
+├── ./config
+│   ├── ./config/__init__.py
+│   ├── ./config/asgi.py
+│   ├── ./config/settings.py
+│   ├── ./config/urls.py
+│   └── ./config/wsgi.py
+├── ./manage.py
+└── ./requirements.txt
 ```
 
 ## 2. 実行手順
@@ -158,5 +157,5 @@ C:.
 
     Djangoの開発サーバー起動
     ```
-    python manage.py runserver 0.0.0.0:8000
+    python manage.py runserver
     ```
