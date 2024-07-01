@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'regular.apps.RegularConfig', # 定期業務
+    # 'regular.apps.RegularConfig', # 定期業務
     # 'book.apps.BookConfig', # 本管理
 ]
 
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'bookproject.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'bookproject.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # データベース
