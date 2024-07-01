@@ -3,7 +3,7 @@ from . import views
 
 # 各ページのURLを定義
 urlpatterns = [
-    path('', views.index_view, name='index'),                                        # 
+    path('', views.index_view, name='index'),                                        # ホーム
     path('20s/', views.ListTaskView.as_view(), name='list-task'),                    # トップ
     path('20s/login/', views.LoginTaskView.as_view(), name='login-task'),            # ログイン
     path('20s/reg/', views.RegTaskView.as_view(), name='reg-task'),                  # 利用者登録
