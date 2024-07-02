@@ -130,7 +130,7 @@ pip install -r requirements.txt
     appsディレクトリ内にDjangoアプリケーションを作成
     ※appsディレクトリにcd appsで移動してから実行
     ```
-    python manage.py startapp <アプリ名>
+    python ../manage.py startapp <アプリ名>
     ```
 
     Djangoのマイグレーション

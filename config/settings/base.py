@@ -11,7 +11,6 @@ load_dotenv()  # 環境変数を読み込む
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # アプリケーション定義
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,8 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'regular.apps.RegularConfig', # 定期業務
-    # 'book.apps.BookConfig', # 本管理
+    'apps.regular.apps.RegularConfig',  # 変更
+    # 'apps.book',
 ]
 
 MIDDLEWARE = [
