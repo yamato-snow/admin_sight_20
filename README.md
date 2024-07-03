@@ -15,7 +15,7 @@
 - Django
 
 ### デプロイ
-- Heroku（予定）
+- GCP App Engine（予定）
 
 ## 前提条件
 - Gitがインストールされていること
