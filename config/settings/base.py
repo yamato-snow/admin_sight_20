@@ -1,37 +1,16 @@
 """
-構成プロジェクトの Django 設定。
-
-Django 3.2.8 を使用して 'django-admin startproject' によって生成されました。
-
-このファイルの詳細については、以下を参照してください。
-
-https://docs.djangoproject.com/en/3.2/topics/settings/
-
-設定とその値の完全なリストについては、以下を参照してください。
-
-https://docs.djangoproject.com/en/3.2/ref/settings/
+構成プロジェクトの Django 共通設定。
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 
-# Bプロジェクト内のビルド パスは、BASE_DIR / 'subdir' のようになります。.
-BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv()  # 環境変数を読み込む
 
-
-# クイックスタート開発設定 - 本番環境には適していません
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# セキュリティ警告: 本番環境で使用される秘密鍵は秘密にしておいてください。
-SECRET_KEY = 'django-insecure-pqiye-1(ui^!y8-&6u9sqlv!c6ydj))&5xts!l+(@l=6-$8h96'
-
-# セキュリティ警告: 本番環境ではデバッグをオンにして実行しないでください。
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+# プロジェクト内のビルド パスは、BASE_DIR / 'subdir' のようになります。.
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # アプリケーション定義
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,8 +18,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD:config/settings.py
     # 'regular.apps.RegularConfig', # 定期業務
     # 'book.apps.BookConfig', # 本管理
+=======
+    'apps.regular.apps.RegularConfig',  # 変更
+    # 'apps.book',
+>>>>>>> yamato:config/settings/base.py
 ]
 
 MIDDLEWARE = [
@@ -72,6 +56,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+<<<<<<< HEAD:config/settings.py
 
 
 # データベース
@@ -87,6 +72,8 @@ DATABASES = {
 
 # パスワードの検証
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+=======
+>>>>>>> yamato:config/settings/base.py
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -103,9 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # 国際化
-# https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGE_CODE = 'ja'
 
@@ -117,18 +102,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # 静的ファイル（CSS、JavaScript、画像）
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# デフォルトの主キーフィールドタイプ
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
