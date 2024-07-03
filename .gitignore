@@ -1,2 +1,11 @@
 /.python-version
 /.venv
+.env
+**/.pyc
+**/__pycache__/
+**/*.log
+**/*.pot
+**/local_settings.py
+**/db.sqlite3
+**/media
+**/.DS_Store
