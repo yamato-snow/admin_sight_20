@@ -18,13 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD:config/settings.py
-    # 'regular.apps.RegularConfig', # 定期業務
-    # 'book.apps.BookConfig', # 本管理
-=======
     'apps.regular.apps.RegularConfig',  # 変更
     # 'apps.book',
->>>>>>> e27acf9bcdd3c10381077d5ea9782ddc12fc5c1d:config/settings/base.py
 ]
 
 MIDDLEWARE = [
@@ -56,24 +51,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-<<<<<<< HEAD:config/settings.py
-
-
-# データベース
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
-# パスワードの検証
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-=======
->>>>>>> e27acf9bcdd3c10381077d5ea9782ddc12fc5c1d:config/settings/base.py
 
 AUTH_PASSWORD_VALIDATORS = [
     {
