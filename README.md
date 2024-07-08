@@ -15,7 +15,7 @@
 - Django
 
 ### デプロイ
-- GCP App Engine（予定）
+- Heroku（予定）
 
 ## 前提条件
 - Gitがインストールされていること
@@ -189,7 +189,16 @@ DATABASE_URL=sqlite:///db.sqlite3
 .env
 ```
 
-#### 4. 環境変数の使用
+#### 4. 環境変数の読み込み
+
+Djangoプロジェクトで環境変数を読み込むために、`python-dotenv`ライブラリを使用します。`requirements.txt`ファイルに`python-dotenv`を追加し、インストールします。
+
+```
+# requirements.txtファイルに追加
+python-dotenv==0.19.2
+```
+
+#### 5. 環境変数の使用
 
 環境変数は、`settings`モジュールや`manage.py`ファイルで使用されます。以下は、`settings`モジュールで環境変数を使用する例です。
 
