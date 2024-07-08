@@ -13,25 +13,25 @@ from django.views.generic import (
 from .models import Task, Login, Standard, Guestalk
 
 class ListTaskView(LoginRequiredMixin, ListView):
-    template_name = '/task/task_list.html'
+    template_name = '/templates/regular/task_list.html'
     model = Task
 
 class LoginTaskView(LoginRequiredMixin, FormView):
-    template_name = '/task/task_login.html'
+    template_name = '/templates/regular/task_login.html'
     model = Login
 
 class RegTaskView(LoginRequiredMixin, CreateView):
-    template_name = '/task/task_reg.html'
+    template_name = '/templates/regular/task_reg.html'
     model = Login
 
 class PasswordTaskView(LoginRequiredMixin, UpdateView):
-    template_name = '/task/task_password.html'
+    template_name = '/templates/regular/task_password.html'
     model = Login
 
 class StandardTaskView(LoginRequiredMixin, UpdateView):
-    template_name = '/task/task_standard.html'
+    template_name = '/templates/regular/task_standard.html'
     model = Standard
 
 class GuestalkTaskView(LoginRequiredMixin, UpdateView):
-    template_name = '/task/task_guestalk.html'
+    template_name = '/templates/regular/task_guestalk.html'
     model = Guestalk
