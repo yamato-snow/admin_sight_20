@@ -7,31 +7,17 @@ from django.db.models import Avg
 from django.views.generic import (
     ListView,
     FormView,
-    CreateView,
-    UpdateView,
     )
-from .models import Task, Login, Standard, Guestalk
+from .models import Task, Standard, Guestalk
 
 class ListTaskView(LoginRequiredMixin, ListView):
     template_name = '/templates/regular/task_list.html'
     model = Task
 
-class LoginTaskView(LoginRequiredMixin, FormView):
-    template_name = '/templates/regular/task_login.html'
-    model = Login
-
-class RegTaskView(LoginRequiredMixin, CreateView):
-    template_name = '/templates/regular/task_reg.html'
-    model = Login
-
-class PasswordTaskView(LoginRequiredMixin, UpdateView):
-    template_name = '/templates/regular/task_password.html'
-    model = Login
-
-class StandardTaskView(LoginRequiredMixin, UpdateView):
+class StandardTaskView(LoginRequiredMixin, FormView):
     template_name = '/templates/regular/task_standard.html'
     model = Standard
 
-class GuestalkTaskView(LoginRequiredMixin, UpdateView):
+class GuestalkTaskView(LoginRequiredMixin, FormView):
     template_name = '/templates/regular/task_guestalk.html'
     model = Guestalk
