@@ -6,7 +6,7 @@ from django.urls import reverse, reverse_lazy
 from django.db.models import Avg
 from django.views.generic import (
     ListView,
-    FormView,
+    CreateView,
     )
 from .models import Task, Standard, Guestalk
 
@@ -14,10 +14,10 @@ class ListTaskView(LoginRequiredMixin, ListView):
     template_name = '/templates/regular/task_list.html'
     model = Task
 
-class StandardTaskView(LoginRequiredMixin, FormView):
+class StandardTaskView(LoginRequiredMixin, CreateView):
     template_name = '/templates/regular/task_standard.html'
     model = Standard
 
-class GuestalkTaskView(LoginRequiredMixin, FormView):
+class GuestalkTaskView(LoginRequiredMixin, CreateView):
     template_name = '/templates/regular/task_guestalk.html'
     model = Guestalk
