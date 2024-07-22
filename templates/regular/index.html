@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}本棚アプリ{% endblock %}
+{% block h1 %}本棚アプリ{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-9">
+  {% for item in object_list %}
+    <div class="p4 m-4 bg-light border border-success rounded">
+      <h2 class="text-success">{{ item.title }}</h2>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock content %}
