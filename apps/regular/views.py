@@ -11,13 +11,19 @@ from django.views.generic import (
 from .models import Task, Standard, Guestalk
 
 class ListTaskView(LoginRequiredMixin, ListView):
-    template_name = '/templates/regular/task_list.html'
+    template_name = 'regular/task_list.html'
     model = Task
 
 class StandardTaskView(LoginRequiredMixin, CreateView):
-    template_name = '/templates/regular/task_standard.html'
+    template_name = 'regular/task_standard.html'
     model = Standard
 
 class GuestalkTaskView(LoginRequiredMixin, CreateView):
-    template_name = '/templates/regular/task_guestalk.html'
+    template_name = 'regular/task_guestalk.html'
     model = Guestalk
+
+def index_view(request):
+    return render(
+        request,
+        'regular/index.html',
+        )
