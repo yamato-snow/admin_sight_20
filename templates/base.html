@@ -14,10 +14,9 @@
     <nav class="navbar navbar-dark bg-success sticky-top">
       <div class="navbar-nav d-flex flex-row">
         {% if request.user.is_authenticated %}
-          <a class="nav-link mx-3" href="{% url 'accounts:logout' %}">ログアウト</a>
-        {% else %}
           <a class="nav-link mx-3" href="{% url 'accounts:login' %}">ログイン</a>
-          <a class="nav-link mx-3" href="{% url 'accounts:signup' %}">会員登録</a>
+          <a class="nav-link mx-3" href="{% url 'accounts:signup' %}">利用者登録</a>
+          <a class="nav-link mx-3" href="{% url 'accounts:logout' %}">PW更新</a>
         {% endif %}
       </div>
     </nav>
