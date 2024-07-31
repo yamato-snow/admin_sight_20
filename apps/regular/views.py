@@ -20,7 +20,17 @@ class StandardTaskView(LoginRequiredMixin, CreateView):
     fields = ['title', 'zoom', 'user']
 
 class GuestalkTaskView(LoginRequiredMixin, CreateView):
-    template_name = 'regular/task_guestalk.html'
+    template_name = 'regular/task_guest_list.html'
+    model = Guestalk
+    fields = ['title', 'day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom', 'user']
+
+class CreateTaskView(LoginRequiredMixin, CreateView):
+    template_name = 'regular/task_guest_create.html'
+    model = Guestalk
+    fields = ['title', 'day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom', 'user']
+
+class UpdateTaskView(LoginRequiredMixin, CreateView):
+    template_name = 'regular/task_guest_update.html'
     model = Guestalk
     fields = ['title', 'day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom', 'user']
 
