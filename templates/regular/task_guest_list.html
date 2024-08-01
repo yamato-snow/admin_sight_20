@@ -1,92 +1,40 @@
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-
-    <title>{% block title %}{% endblock title %}| リベシティ20代zoomゲストーーク！</title>
-  </head>
-<!--
 {% extends 'base.html' %}
 
 {% block title %}ゲストーーク！一覧{% endblock %}
 {% block h1 %}ゲストーーク！一覧{% endblock %}
 
 {% block content %}
--->
-
-<h1>ゲストーーク！一覧</title>
   <div class="d-grid gap-2 d-md-flex col-2 mx-auto">
     <button type="submit" class="btn btn-info">
         新規作成
     </button>
   </div>
+
+  <!--
+  {% for item in object_list %}
+  <div class="p4 m-4 bg-light border border-success rounded">
+    <h2 class="text-success">vol.{{ item.vol }}　<a href="{{ item.guest_url }}">{{ item.guest }}</a>：{{ item.theme }}</h2>
+    <h6>{{ item.day }}　<a href="{{ item.spreadsheet }}">質問スプシ</a></h6>
+    <div class="mt-3">
+      <a href="{% url 'update-task' item.pk %}">詳細へ</a>
+    </div>
+  </div>
+  {% endfor %}
+  {% include 'components/pagination.html' %}
+  -->
+
+  <div class="p4 m-4 bg-light border border-success rounded">
+    <h2 class="text-success">
+      vol.1　<a href="https://libecity.com/user_profile/WFSqPpx3iUQlufUJnCxNfS9ssnv1">みゆぽんさん</a>：フリー音楽家</h2>
+    <h6>2023/10/20　<a href="https://docs.google.com/spreadsheets/d/12dYxJn25XcYBHCQ0Nn9PLYGS3C8tz7_3Q_oDQkSNbzE/edit?usp=sharing">質問スプシ</a></h6>
+    <div class="mt-3">
+      <a href="">詳細へ</a>
+    </div>
+  </div>
   <div>
-    <div class="row">
-      <div class="col-9">
-        <div class="p4 m-4 bg-light border border-success rounded">
-          <h2 class="text-success">
-            vol.1 <a href="https://libecity.com/user_profile/WFSqPpx3iUQlufUJnCxNfS9ssnv1">みゆぽん</a>:フリー音楽家</h2>
-          <h6>2023/10/20 <a href="https://docs.google.com/spreadsheets/d/12dYxJn25XcYBHCQ0Nn9PLYGS3C8tz7_3Q_oDQkSNbzE/edit?usp=sharing">質問スプシ</a></h6>
-          <h6 class="mt-3">
-            <a href="">詳細へ</a>
-          </div>
-        </div>
-      </div>
-    <div class="row">
-      <div class="col-9">
-        <div class="p4 m-4 bg-light border border-success rounded">
-          <h2 class="text-success">
-            vol.1 <a href="https://libecity.com/user_profile/WFSqPpx3iUQlufUJnCxNfS9ssnv1">みゆぽん</a>:フリー音楽家</h2>
-          <h6>2023/10/20 <a href="https://docs.google.com/spreadsheets/d/12dYxJn25XcYBHCQ0Nn9PLYGS3C8tz7_3Q_oDQkSNbzE/edit?usp=sharing">質問スプシ</a></h6>
-          <h6 class="mt-3">
-            <a href="">詳細へ</a>
-          </div>
-        </div>
-      </div>
-    <div class="row">
-      <div class="col-9">
-        <div class="p4 m-4 bg-light border border-success rounded">
-          <h2 class="text-success">
-            vol.1 <a href="https://libecity.com/user_profile/WFSqPpx3iUQlufUJnCxNfS9ssnv1">みゆぽん</a>:フリー音楽家</h2>
-          <h6>2023/10/20 <a href="https://docs.google.com/spreadsheets/d/12dYxJn25XcYBHCQ0Nn9PLYGS3C8tz7_3Q_oDQkSNbzE/edit?usp=sharing">質問スプシ</a></h6>
-          <h6 class="mt-3">
-            <a href="">詳細へ</a>
-          </div>
-        </div>
-      </div>
-    <div class="row">
-      <div class="col-9">
-        <div class="p4 m-4 bg-light border border-success rounded">
-          <h2 class="text-success">
-            vol.1 <a href="https://libecity.com/user_profile/WFSqPpx3iUQlufUJnCxNfS9ssnv1">みゆぽん</a>:フリー音楽家</h2>
-          <h6>2023/10/20 <a href="https://docs.google.com/spreadsheets/d/12dYxJn25XcYBHCQ0Nn9PLYGS3C8tz7_3Q_oDQkSNbzE/edit?usp=sharing">質問スプシ</a></h6>
-          <h6 class="mt-3">
-            <a href="">詳細へ</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-9">
-        <div class="p4 m-4 bg-light border border-success rounded">
-          <h2 class="text-success">
-            vol.1 <a href="https://libecity.com/user_profile/WFSqPpx3iUQlufUJnCxNfS9ssnv1">みゆぽん</a>:フリー音楽家</h2>
-          <h6>2023/10/20 <a href="https://docs.google.com/spreadsheets/d/12dYxJn25XcYBHCQ0Nn9PLYGS3C8tz7_3Q_oDQkSNbzE/edit?usp=sharing">質問スプシ</a></h6>
-          <h6 class="mt-3">
-            <a href="">詳細へ</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h6 class="text-left">
+      <a href="">＜前へ</a></h6>
+    <h6 class="text-right">
+      <a href="">次へ＞</a></h6>
   </div>
-  <h6 class="text-left">
-    <a href="">＜前へ</a>
-  </div>
-  <h6 class="text-right">
-    <a href="">次へ＞</a>
-  </div>
+{% endblock content %}

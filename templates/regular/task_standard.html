@@ -1,72 +1,60 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base.html' %}
 
-    <!-- Bootstrap CSS -->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% block title %}開催案内（通常回）{% endblock %}
+{% block h1 %}開催案内（通常回）{% endblock %}
 
+{% block content %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td class="table-light"></td><th class="table-primary">一言コメント</th><th class="table-primary">自己紹介テンプレ⑤</th>
+      </tr>
+    </thead>
+    <tbody class="">
+      <tr>
+        <th class="table-primary">1週目</th>
+        <td><input class="" name="comment"></td>
+        <td><input class="" name="introduction"></td>
+      </tr>
+      <tr>
+        <th class="table-primary">2週目</th>
+        <td><input class="" name="comment"></td>
+        <td><input class="" name="introduction"></td>
+      </tr>
+      <tr>
+        <th class="table-primary">3週目</th>
+        <td><input class="" name="comment"></td>
+        <td><input class="" name="introduction"></td>
+      </tr>
+      <tr>
+        <th class="table-primary">4週目</th>
+        <td><input class="" name="comment"></td>
+        <td><input class="" name="introduction"></td>
+      </tr>
+      <tr>
+        <th class="table-primary">5週目</th>
+        <td><input class="" name="comment"></td>
+        <td><input class="" name="introduction"></td>
+      </tr>
+    </tbody>
+  </table>
 
-    <title>{% block title %}{% endblock title %}| リベシティ20代zoom開催案内（通常）</title>
-  </head>
-  <body>
-    <h1>開催案内（通常回）</h1>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <td class="table-light"></td><th class="table-primary">一言コメント</th><th class="table-primary">自己紹介テンプレ⑤</th>
-        </tr>
-      </thead>
-      <tbody class="">
-        <tr>
-          <th class="table-primary">1週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-        <tr>
-          <th class="table-primary">2週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-        <tr>
-          <th class="table-primary">3週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-        <tr>
-          <th class="table-primary">4週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-        <tr>
-          <th class="table-primary">5週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-      </tbody>
-    </table>
+  <h2>zoomリンク</h2>
+  <div class="border border-dark d-inline-flex p-2 bd-highlight">
+      <a href="https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09#success">https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09#success</a>
+  </div>
+  <p><br></p>
+  <div>
+    <button type="submit" class="btn btn-primary">
+        定期実行
+    </button>
 
-    <h2>zoomリンク</h2>
-    <div class="border border-dark d-inline-flex p-2 bd-highlight">
-        <a href="https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09#success">https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09#success</a>
-    </div>
+    <button type="submit" class="btn btn-warning">
+        内容変更
+    </button>
 
-    <div>
-        <button type="submit" class="btn btn-primary">
-            定期実行
-        </button>
-
-        <button type="submit" class="btn btn-warning">
-            内容変更
-        </button>
-
-        <button type="submit" class="btn btn-danger">
-            実行中止
-        </button>
-    </div>
-
-
-  </body>
-</html>
+    <button type="submit" class="btn btn-danger">
+        実行中止
+    </button>
+  </div>
+{% endblock content %}
