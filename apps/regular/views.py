@@ -9,6 +9,7 @@ from django.views.generic import (
     CreateView,
     )
 from .models import Task, Standard, Guestalk
+from .consts import ITEM_PER_PAGE
 
 class ListTaskView(LoginRequiredMixin, ListView):
     template_name = 'regular/task_list.html'
@@ -22,7 +23,8 @@ class StandardTaskView(LoginRequiredMixin, CreateView):
 class GuestalkTaskView(LoginRequiredMixin, CreateView):
     template_name = 'regular/task_guest_list.html'
     model = Guestalk
-    fields = ['title', 'day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom', 'user']
+    fields = ['day', 'vol', 'guest', 'guest_url', 'theme', 'spreadsheet']
+    paginate_by = ITEM_PER_PAGE
 
 class CreateTaskView(LoginRequiredMixin, CreateView):
     template_name = 'regular/task_guest_create.html'
@@ -35,26 +37,14 @@ class UpdateTaskView(LoginRequiredMixin, CreateView):
     fields = ['title', 'day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom', 'user']
 
 def index_view(request):
-    task_list = Task.objects.all()
-    standard_list = Standard.objects.all()
-    guestalk_list = Guestalk.objects.all()
-    
-    paginator_task = Paginator(task_list, 10)  # 10 items per page
-    paginator_standard = Paginator(standard_list, 10)  # 10 items per page
-    paginator_guestalk = Paginator(guestalk_list, 10)  # 10 items per page
-    
-    page_number_task = request.GET.get('task_page')
-    page_number_standard = request.GET.get('standard_page')
-    page_number_guestalk = request.GET.get('guestalk_page')
-    
-    page_obj_task = paginator_task.get_page(page_number_task)
-    page_obj_standard = paginator_standard.get_page(page_number_standard)
-    page_obj_guestalk = paginator_guestalk.get_page(page_number_guestalk)
-    
-    context = {
-        'page_obj_task': page_obj_task,
-        'page_obj_standard': page_obj_standard,
-        'page_obj_guestalk': page_obj_guestalk,
-    }
-    
-    return render(request, 'regular/index.html', context)
+    object_list = Task.objects.order_by('-id')
+
+    paginator = Paginator(object_list, ITEM_PER_PAGE)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+
+    return render(
+        request,
+        'regular/index.html',
+        {'object_list': object_list, 'page_obj':page_obj },
+        )
