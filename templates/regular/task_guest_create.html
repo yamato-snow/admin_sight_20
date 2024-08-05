@@ -4,36 +4,49 @@
 {% block h1 %}ゲストーーク！＜新規＞{% endblock %}
 
 {% block content %}
-  <p><br>開催日（『4/1』の形式で半角入力）</p>
-  <input class="" name="comment">
-  <p><br>開催回（『vol.〇』の〇のみ半角入力）</p>
-  <input class="" name="comment">
-  <p><br>ゲスト名</p>
-  <input class="" name="comment">
-  <p><br>ゲストプロフィールURL</p>
-  <input class="" name="comment">
-  <p><br>お題（『〇〇について聞いてみよう』の〇〇のみ入力）</p>
-  <input class="" name="comment">
-  <p><br>ひとことコメント</p>
-  <input class="" name="comment">
-  <p><br>自己紹介テンプレ⑤</p>
-  <input class="" name="comment">
-  <p><br>サムネURL</p>
-  <input class="" name="comment">
-  <p><br>質問スプシURL</p>
-  <input class="" name="comment">
-  <p><br>zoomリンク</p>
-  <div class="border border-dark d-inline-flex p-2 bd-highlight">
-      <a href="https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09#success">https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09#success</a>
-  </div>
-  <p><br></p>
-  <div>
-      <button type="submit" class="btn btn-primary">
-          投稿予約
-      </button>
+  <form method='post' class="p-4 m-4 bg-light border border-success rounded form-group">{% csrf_token %}
+    <div class="form-group">
+      <label for="id_day">{{ form.day.label }}</label><br>
+      {{ form.day }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_vol">{{ form.vol.label }}</label><br>
+      {{ form.vol }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_guest">{{ form.guest.label }}</label><br>
+      {{ form.guest }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_guest_url">{{ form.guest_url.label }}</label><br>
+      {{ form.guest_url }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_theme">{{ form.theme.label }}</label><br>
+      {{ form.theme }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_comment">{{ form.comment.label }}</label><br>
+      {{ form.comment }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_template">{{ form.template.label }}</label><br>
+      {{ form.template }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_thumbnail">{{ form.thumbnail.label }}</label><br>
+      {{ form.thumbnail }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_spreadsheet">{{ form.spreadsheet.label }}</label><br>
+      {{ form.spreadsheet }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_zoom">{{ form.zoom.label }}</label><br>
+      {{ form.zoom }}
+    </div>
 
-      <button type="submit" class="btn btn-warning">
-          一覧へ戻る
-      </button>
-  </div>
+    <br><input type='submit' value='予約投稿'>
+    <a href="{% url 'guestalk-task' %}" class="btn btn-primary">一覧へ戻る</a>
+  </form>
 {% endblock content %}
