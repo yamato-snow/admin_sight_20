@@ -36,20 +36,20 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
         
         return super().form_valid(form)
 
-class UpdateTaskView(LoginRequiredMixin, CreateView):
-#class UpdateTaskView(LoginRequiredMixin, UpdateView):
+#class UpdateTaskView(LoginRequiredMixin, CreateView):
+class UpdateTaskView(LoginRequiredMixin, UpdateView):
     template_name = 'regular/task_guest_update.html'
     model = Guestalk
     fields = ['day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom']
     success_url = reverse_lazy('list-task')
 
-#    def get_object(self, queryset=None):
-#        obj = super().get_object(queryset)
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
 
-#        if obj.user != self.request.user:
-#            raise PermissionDenied
+        if obj.user != self.request.user:
+            raise PermissionDenied
         
-#        return obj
+        return obj
     
 def index_view(request):
     object_list = Task.objects.order_by('-id')

@@ -10,7 +10,7 @@ class Task(models.Model):
 class Standard(models.Model):
     comment = models.TextField()
     template = models.CharField(max_length=50)
-    zoom = models.CharField(max_length=100)
+    zoom = models.URLField()
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
     def __str__(self):
@@ -18,15 +18,15 @@ class Standard(models.Model):
 
 class Guestalk(models.Model):
     day = models.CharField(max_length=5, verbose_name='開催日（『4/1』の形式で半角入力）')
-    vol = models.CharField(max_length=2, verbose_name='開催回（『vol.〇』の〇のみ半角入力）')
+    vol = models.PositiveIntegerField(verbose_name='開催回（『vol.〇』の〇のみ半角入力）')
     guest = models.CharField(max_length=50, verbose_name='ゲスト名')
-    guest_url = models.CharField(max_length=200, verbose_name='ゲストプロフィールURL')
+    guest_url = models.URLField(verbose_name='ゲストプロフィールURL')
     theme = models.CharField(max_length=50, verbose_name='お題（『〇〇について聞いてみよう』の〇〇のみ入力）')
     comment = models.TextField(verbose_name='ひとことコメント')
     template = models.CharField(max_length=50, verbose_name='自己紹介テンプレ⑤')
-    thumbnail = models.CharField(max_length=150, verbose_name='サムネURL')
-    spreadsheet = models.CharField(max_length=150, verbose_name='質問スプシURL')
-    zoom = models.CharField(max_length=100, verbose_name='zoomリンク')
+    thumbnail = models.URLField(verbose_name='サムネURL')
+    spreadsheet = models.URLField(verbose_name='質問スプシURL')
+    zoom = models.URLField(verbose_name='zoomリンク')
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
     def __str__(self):
