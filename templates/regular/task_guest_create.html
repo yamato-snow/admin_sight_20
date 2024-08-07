@@ -4,7 +4,8 @@
 {% block h1 %}ゲストーーク！＜新規＞{% endblock %}
 
 {% block content %}
-  <form method='post' class="p-4 m-4 bg-light border border-success rounded form-group">{% csrf_token %}
+  <form method='post' class="p-4 m-4 bg-light border border-success rounded form-group">
+    {% csrf_token %}
     <div class="form-group">
       <label for="id_day">{{ form.day.label }}</label><br>
       {{ form.day }}
@@ -21,7 +22,7 @@
       <br><label for="id_guest_url">{{ form.guest_url.label }}</label><br>
       {{ form.guest_url }}
     </div>
-    <div class="form-group">
+      <div class="form-group">
       <br><label for="id_theme">{{ form.theme.label }}</label><br>
       {{ form.theme }}
     </div>

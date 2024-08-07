@@ -4,50 +4,51 @@
 {% block h1 %}ゲストーーク！＜詳細＞{% endblock %}
 
 {% block content %}
-<form method='post' class="p-4 m-4 bg-light border border-success rounded form-group">{% csrf_token %}
-  <div class="form-group">
-    <label for="id_day">{{ form.day.label }}</label><br>
-    {{ form.day }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_vol">{{ form.vol.label }}</label><br>
-    {{ form.vol }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_guest">{{ form.guest.label }}</label><br>
-    {{ form.guest }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_guest_url">{{ form.guest_url.label }}</label><br>
-    {{ form.guest_url }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_theme">{{ form.theme.label }}</label><br>
-    {{ form.theme }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_comment">{{ form.comment.label }}</label><br>
-    {{ form.comment }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_template">{{ form.template.label }}</label><br>
-    {{ form.template }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_thumbnail">{{ form.thumbnail.label }}</label><br>
-    {{ form.thumbnail }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_spreadsheet">{{ form.spreadsheet.label }}</label><br>
-    {{ form.spreadsheet }}
-  </div>
-  <div class="form-group">
-    <br><label for="id_zoom">{{ form.zoom.label }}</label><br>
-    {{ form.zoom }}
-  </div>
-    
-  <br><button type='submit'>内容更新</button>
-  <a href="{% url 'guestalk-task' %}" class="btn btn-primary">一覧へ戻る</a>
-  <a href="{% url 'guestalk-task' %}" class="btn btn-danger">削除する</a>
-</form>
+  <form method='post' class="p-4 m-4 bg-light border border-success rounded form-group">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_day">{{ form.day.label }}</label><br>
+      {{ form.day }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_vol">{{ form.vol.label }}</label><br>
+      {{ form.vol }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_guest">{{ form.guest.label }}</label><br>
+      {{ form.guest }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_guest_url">{{ form.guest_url.label }}</label><br>
+      {{ form.guest_url }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_theme">{{ form.theme.label }}</label><br>
+      {{ form.theme }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_comment">{{ form.comment.label }}</label><br>
+      {{ form.comment }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_template">{{ form.template.label }}</label><br>
+      {{ form.template }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_thumbnail">{{ form.thumbnail.label }}</label><br>
+      {{ form.thumbnail }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_spreadsheet">{{ form.spreadsheet.label }}</label><br>
+      {{ form.spreadsheet }}
+    </div>
+    <div class="form-group">
+      <br><label for="id_zoom">{{ form.zoom.label }}</label><br>
+      {{ form.zoom }}
+    </div>
+      
+    <br><button type='submit'>内容更新</button>
+    <a href="{% url 'guestalk-task' %}" class="btn btn-primary">一覧へ戻る</a>
+    <a href="{% url 'guestalk-task' %}" class="btn btn-danger">削除する</a>
+  </form>
 {% endblock content %}

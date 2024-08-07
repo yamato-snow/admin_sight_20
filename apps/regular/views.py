@@ -36,7 +36,6 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
         
         return super().form_valid(form)
 
-#class UpdateTaskView(LoginRequiredMixin, CreateView):
 class UpdateTaskView(LoginRequiredMixin, UpdateView):
     template_name = 'regular/task_guest_update.html'
     model = Guestalk
