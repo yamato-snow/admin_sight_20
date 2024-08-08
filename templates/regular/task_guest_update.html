@@ -47,8 +47,8 @@
       {{ form.zoom }}
     </div>
       
-    <br><button type='submit'>内容更新</button>
+    <br><button type='submit' class="btn btn-success">内容更新</button>
     <a href="{% url 'guestalk-task' %}" class="btn btn-primary">一覧へ戻る</a>
-    <a href="{% url 'guestalk-task' %}" class="btn btn-danger">削除する</a>
+    <button type='submit' class="btn btn-danger">削除する</button>
   </form>
 {% endblock content %}

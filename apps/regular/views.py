@@ -29,7 +29,7 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
     template_name = 'regular/task_guest_create.html'
     model = Guestalk
     fields = ['day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom']
-    success_url = reverse_lazy('list-task')
+    success_url = reverse_lazy('guestalk-task')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -40,7 +40,7 @@ class UpdateTaskView(LoginRequiredMixin, UpdateView):
     template_name = 'regular/task_guest_update.html'
     model = Guestalk
     fields = ['day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom']
-    success_url = reverse_lazy('list-task')
+    success_url = reverse_lazy('guestalk-task')
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
