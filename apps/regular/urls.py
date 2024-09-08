@@ -9,4 +9,5 @@ urlpatterns = [
     path('20s/guestalk/', views.GuestalkTaskView.as_view(), name='guestalk-task'),      # ゲストーーク一覧
     path('20s/create/', views.CreateTaskView.as_view(), name='create-task'),            # ゲストーーク新規
     path('20s/<int:pk>/update/', views.UpdateTaskView.as_view(), name='update-task'),   # ゲストーーク詳細
+    path('20s/<int:pk>/delete/', views.DeleteTaskView.as_view(), name='delete-task'),   # ゲストーーク削除
 ]

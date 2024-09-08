@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}ゲストーーク！削除{% endblock %}
+{% block h1 %}ゲストーーク！＜削除＞{% endblock %}
+
+{% block content %}
+  <form method='post'>
+    {% csrf_token %}
+    <button type='submit'>削除する</button>
+  </form>
+{% endblock content %}

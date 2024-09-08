@@ -7,6 +7,7 @@ from django.views.generic import (
     ListView,
     CreateView,
     UpdateView,
+    DeleteView,
     )
 from .models import Task, Standard, Guestalk
 from .consts import ITEM_PER_PAGE
@@ -40,6 +41,19 @@ class UpdateTaskView(LoginRequiredMixin, UpdateView):
     template_name = 'regular/task_guest_update.html'
     model = Guestalk
     fields = ['day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom']
+    success_url = reverse_lazy('guestalk-task')
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+
+        if obj.user != self.request.user:
+            raise PermissionDenied
+        
+        return obj
+
+class DeleteTaskView(LoginRequiredMixin, DeleteView):
+    template_name = 'regular/task_guest_delete.html'
+    model = Guestalk
     success_url = reverse_lazy('guestalk-task')
 
     def get_object(self, queryset=None):
