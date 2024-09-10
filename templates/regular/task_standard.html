@@ -4,57 +4,51 @@
 {% block h1 %}開催案内（通常回）{% endblock %}
 
 {% block content %}
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <td class="table-light"></td><th class="table-primary">一言コメント</th><th class="table-primary">自己紹介テンプレ⑤</th>
-      </tr>
-    </thead>
-    <tbody class="">
-      <tr>
-        <th class="table-primary">1週目</th>
-        <td><input class="" name="comment"></td>
-        <td><input class="" name="introduction"></td>
-      </tr>
-      <tr>
-        <th class="table-primary">2週目</th>
-        <td><input class="" name="comment"></td>
-        <td><input class="" name="introduction"></td>
-      </tr>
-      <tr>
-        <th class="table-primary">3週目</th>
-        <td><input class="" name="comment"></td>
-        <td><input class="" name="introduction"></td>
-      </tr>
-      <tr>
-        <th class="table-primary">4週目</th>
-        <td><input class="" name="comment"></td>
-        <td><input class="" name="introduction"></td>
-      </tr>
-      <tr>
-        <th class="table-primary">5週目</th>
-        <td><input class="" name="comment"></td>
-        <td><input class="" name="introduction"></td>
-      </tr>
-    </tbody>
-  </table>
+  <form method='post'>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <td class="table-light"></td><th class="table-primary">ひとことコメント</th><th class="table-primary">自己紹介テンプレ⑤</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr>
+          <th class="table-primary">1週目</th>
+          <td><input class="" name="comment"></td>
+          <td><input class="" name="introduction"></td>
+        </tr>
+        <tr>
+          <th class="table-primary">2週目</th>
+          <td><input class="" name="comment"></td>
+          <td><input class="" name="introduction"></td>
+        </tr>
+        <tr>
+          <th class="table-primary">3週目</th>
+          <td><input class="" name="comment"></td>
+          <td><input class="" name="introduction"></td>
+        </tr>
+        <tr>
+          <th class="table-primary">4週目</th>
+          <td><input class="" name="comment"></td>
+          <td><input class="" name="introduction"></td>
+        </tr>
+        <tr>
+          <th class="table-primary">5週目</th>
+          <td><input class="" name="comment"></td>
+          <td><input class="" name="introduction"></td>
+        </tr>
+      </tbody>
+    </table>
 
-  <h2>zoomリンク</h2>
-  <div class="border border-dark d-inline-flex p-2 bd-highlight">
-      <a href="https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09#success">https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09#success</a>
-  </div>
+    <h2>zoomリンク</h2>
+    <div class="border border-dark d-inline-flex p-2 bd-highlight">
+        <a href="https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09">https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09</a>
+    </div>
+  </form>
   <p><br></p>
   <div>
-    <button type="submit" class="btn btn-primary">
-        定期実行
-    </button>
-
-    <button type="submit" class="btn btn-warning">
-        内容変更
-    </button>
-
-    <button type="submit" class="btn btn-danger">
-        実行中止
-    </button>
+    <button type="submit" class="btn btn-primary">定期実行</button>
+    <button type="submit" class="btn btn-warning">内容変更</button>
+    <button type="submit" class="btn btn-danger">実行中止</button>
   </div>
 {% endblock content %}
