@@ -10,6 +10,8 @@ from django.views.generic import (
     )
 from .models import Task, Standard, Guestalk
 from .consts import ITEM_PER_PAGE
+from django.contrib.auth.models import User
+from .forms import SignupForm
 
 class ListTaskView(LoginRequiredMixin, ListView):
     template_name = 'regular/task_list.html'
@@ -63,3 +65,10 @@ def index_view(request):
         'regular/index.html',
         {'object_list': object_list, 'page_obj':page_obj },
         )
+
+#ログイン機能
+class SignupView(CreateView):
+    model = User
+    form_class = SignupForm
+    template_name = 'accounts/signup.html'
+    success_url = reverse_lazy('index')
