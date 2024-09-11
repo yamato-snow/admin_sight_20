@@ -17,7 +17,7 @@ class Standard(models.Model):
         return self.template
 
 class Guestalk(models.Model):
-    day = models.CharField(max_length=5, verbose_name='開催日（『4/1』の形式で半角入力）')
+    day = models.DateField(verbose_name='開催日（『4/1』の形式で半角入力）')
     vol = models.PositiveIntegerField(verbose_name='開催回（『vol.〇』の〇のみ半角入力）')
     guest = models.CharField(max_length=50, verbose_name='ゲスト名')
     guest_url = models.URLField(verbose_name='ゲストプロフィールURL')
