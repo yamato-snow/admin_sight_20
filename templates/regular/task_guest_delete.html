@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}ゲストーーク！削除{% endblock %}
+{% block h1 %}ゲストーーク！＜削除＞{% endblock %}
+
+{% block content %}
+  <form method='post' class="p-4 m-4 bg-light border border-success rounded form-group">
+    {% csrf_token %}
+    <p>本当に削除して良き？</p>
+    <p>※削除しない場合は、ブラウザの戻るボタンから戻ってね</p>
+    <button type='submit' class="btn btn-danger">削除する</button>
+  </form>
+{% endblock content %}

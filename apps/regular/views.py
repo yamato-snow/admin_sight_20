@@ -1,3 +1,4 @@
+from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.core.paginator import Paginator
@@ -7,6 +8,7 @@ from django.views.generic import (
     ListView,
     CreateView,
     UpdateView,
+    DeleteView,
     )
 from .models import Task, Standard, Guestalk
 from .consts import ITEM_PER_PAGE
@@ -31,19 +33,39 @@ class CreateTaskView(LoginRequiredMixin, CreateView):
     template_name = 'regular/task_guest_create.html'
     model = Guestalk
     fields = ['day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom']
-    success_url = reverse_lazy('list-task')
+    success_url = reverse_lazy('guestalk-task')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        
         return super().form_valid(form)
+    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['day'].widget = forms.DateInput(attrs={'type': 'date'})
+        return form
 
-#class UpdateTaskView(LoginRequiredMixin, CreateView):
 class UpdateTaskView(LoginRequiredMixin, UpdateView):
     template_name = 'regular/task_guest_update.html'
     model = Guestalk
     fields = ['day', 'vol', 'guest', 'guest_url', 'theme', 'comment', 'template', 'thumbnail', 'spreadsheet', 'zoom']
-    success_url = reverse_lazy('list-task')
+    success_url = reverse_lazy('guestalk-task')
+
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+
+        if obj.user != self.request.user:
+            raise PermissionDenied
+        return obj
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['day'].widget = forms.DateInput(attrs={'type': 'date'})  # カレンダーウィジェットを設定
+        return form
+    
+class DeleteTaskView(LoginRequiredMixin, DeleteView):
+    template_name = 'regular/task_guest_delete.html'
+    model = Guestalk
+    success_url = reverse_lazy('guestalk-task')
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
