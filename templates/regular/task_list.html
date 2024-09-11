@@ -4,12 +4,25 @@
 {% block h1 %}20代チャット管理人タスク{% endblock %}
 
 {% block content %}
-  {% for item in object_list %}
-  <div class="p-4 m-4 bg-light border border-success rounded">
-    <div class="mt-3">
-      <a href="{% url 'standard-task' item.pk %}">開催案内(通常回)</a>
+<div class="row">
+  <div class="col-9">
+    <div class="p-4 m-4 bg-light border border-success rounded">
+      <h2 class="text-success"><a href="{% url 'standard-task' %}">開催案内（通常回）</a></h2>
+      <h6>毎週金曜日の8:00に開催案内、20:55にzoomリンクを投稿</h6>
     </div>
-    <h6>毎週金曜日の8:00に開催案内、20:55にzoomリンクを投稿</h6>
+    <div class="p-4 m-4 bg-light border border-success rounded">
+      <h2 class="text-success"><a href="{% url 'guestalk-task' %}">ゲストーーク関連</a></h2>
+      <h6>前週土曜日8:00の開催予告、当日8:00の開催案内、</h6>
+      <h6>20:55にzoomリンク、当日21:30の直前告知を投稿</h6>
+    </div>
+    <div class="p-4 m-4 bg-light border border-success rounded">
+      <h2 class="text-success"><a href="https://docs.google.com/spreadsheets/d/1SLtRndCnpt3o8AewsGBxlxYJudIemK3gnm8E5VeCbyc/edit?usp=sharing" target="_blank">アンケートフォームの作成</a>（<a href="https://docs.google.com/document/d/1BFfwaiWijIhiuKANw_AFNrvB3nlEoPV_1GCAUxsqyK0/edit?usp=sharing" target="_blank">マニュアル</a>）</h2>
+      <h6>ゲストーーク終了後のアンケートフォームを作成</h6>
+    </div>
+    <div class="p-4 m-4 bg-light border border-success rounded">
+      <h2 class="text-success"><a href="https://docs.google.com/spreadsheets/d/1IXKIqyPa4xvhTnJUdeksTtdAtLneqO0U/edit?usp=sharing" target="_blank">オフ会カレンダー登録</a>（<a href="https://drive.google.com/file/d/1OYs_K4Zr-V4pHSWTiMt6ioSQCDI_RgZC/view?usp=sharing" target="_blank">マニュアル</a>）</h2>
+      <h6>イベント・オフ会カレンダーにイベントを登録</h6>
+    </div>
   </div>
-  {% endfor %}
+</div>
 {% endblock content %}
