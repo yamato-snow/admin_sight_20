@@ -8,13 +8,21 @@ class Task(models.Model):
         return self.text
 
 class Standard(models.Model):
-    comment = models.TextField()
-    template = models.CharField(max_length=50)
-    zoom = models.URLField()
+    comment1 = models.TextField(blank=True)
+    template1 = models.CharField(max_length=50, blank=True)
+    comment2 = models.TextField(blank=True)
+    template2 = models.CharField(max_length=50, blank=True)
+    comment3 = models.TextField(blank=True)
+    template3 = models.CharField(max_length=50, blank=True)
+    comment4 = models.TextField(blank=True)
+    template4 = models.CharField(max_length=50, blank=True)
+    comment5 = models.TextField(blank=True)
+    template5 = models.CharField(max_length=50, blank=True)
+    zoom = models.URLField(verbose_name='zoomリンク')
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.template
+        return self.comment1
 
 class Guestalk(models.Model):
     day = models.DateField(verbose_name='開催日（『4/1』の形式で半角入力）')

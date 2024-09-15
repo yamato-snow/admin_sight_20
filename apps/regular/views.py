@@ -20,8 +20,13 @@ class ListTaskView(LoginRequiredMixin, ListView):
 class StandardTaskView(LoginRequiredMixin, CreateView):
     template_name = 'regular/task_standard.html'
     model = Standard
-    fields = ['comment', 'template', 'zoom']
+    fields = ['comment1', 'template1', 'comment2', 'template2', 'comment3', 'template3', 'comment4', 'template4', 'comment5', 'template5', 'zoom']
+    success_url = reverse_lazy('standard-task')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
 class GuestalkTaskView(LoginRequiredMixin, ListView):
     template_name = 'regular/task_guest_list.html'
     model = Guestalk

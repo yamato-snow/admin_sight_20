@@ -4,51 +4,55 @@
 {% block h1 %}開催案内（通常回）{% endblock %}
 
 {% block content %}
-  <form method='post'>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <td class="table-light"></td><th class="table-primary">ひとことコメント</th><th class="table-primary">自己紹介テンプレ⑤</th>
-        </tr>
-      </thead>
-      <tbody class="">
-        <tr>
-          <th class="table-primary">1週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-        <tr>
-          <th class="table-primary">2週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-        <tr>
-          <th class="table-primary">3週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-        <tr>
-          <th class="table-primary">4週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-        <tr>
-          <th class="table-primary">5週目</th>
-          <td><input class="" name="comment"></td>
-          <td><input class="" name="introduction"></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2>zoomリンク</h2>
-    <div class="border border-dark d-inline-flex p-2 bd-highlight">
-        <a href="https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09">https://us06web.zoom.us/j/3024826502?pwd=OFhIZHY1U0dtYUlaN0NKTWlPbi9LQT09</a>
+  <form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
+    {% csrf_token %}
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">ひとことコメント</th>
+            <th scope="col">自己紹介テンプレ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1週目</th>
+            <td><input type="text" class="form-control" name="comment1" value="{{ data.comment1 }}"></td>
+            <td><input type="text" class="form-control" name="template1" value="{{ data.template1 }}"></td>
+          </tr>
+          <tr>
+            <th scope="row">2週目</th>
+            <td><input type="text" class="form-control" name="comment2" value="{{ data.comment2 }}"></td>
+            <td><input type="text" class="form-control" name="template2" value="{{ data.template2 }}"></td>
+          </tr>
+          <tr>
+            <th scope="row">3週目</th>
+            <td><input type="text" class="form-control" name="comment3" value="{{ data.comment3 }}"></td>
+            <td><input type="text" class="form-control" name="template3" value="{{ data.template3 }}"></td>
+          </tr>
+          <tr>
+            <th scope="row">4週目</th>
+            <td><input type="text" class="form-control" name="comment4" value="{{ data.comment4 }}"></td>
+            <td><input type="text" class="form-control" name="template4" value="{{ data.template4 }}"></td>
+          </tr>
+          <tr>
+            <th scope="row">5週目</th>
+            <td><input type="text" class="form-control" name="comment5" value="{{ data.comment5 }}"></td>
+            <td><input type="text" class="form-control" name="template5" value="{{ data.template5 }}"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <div class="form-group">
+      <br><label for="id_zoom">{{ form.zoom.label }}</label><br>
+      {{ form.zoom }}
+    </div>
+
+    <br>
+    <button type="submit" name="action" value="execute" class="btn btn-primary mx-2">定期実行</button>
+    <button type="submit" name="action" value="update" class="btn btn-warning mx-2">内容変更</button>
+    <button type="submit" name="action" value="cancel" class="btn btn-danger mx-2">実行中止</button>
   </form>
-  <p><br></p>
-  <div>
-    <button type="submit" class="btn btn-primary">定期実行</button>
-    <button type="submit" class="btn btn-warning">内容変更</button>
-    <button type="submit" class="btn btn-danger">実行中止</button>
-  </div>
 {% endblock content %}
