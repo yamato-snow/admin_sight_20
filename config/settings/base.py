@@ -18,9 +18,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.regular.apps.RegularConfig',  # 変更
-    'apps.accounts.apps.AccountsConfig'
-    # 'apps.book',
+    'apps.regular.apps.RegularConfig',  # メインアプリケーション
+    'apps.accounts.apps.AccountsConfig', # アカウント管理アプリケーション
 ]
 
 MIDDLEWARE = [
