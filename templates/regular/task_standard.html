@@ -6,7 +6,7 @@
 {% block content %}
   <form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
     {% csrf_token %}
-    <div class="table-responsive">
+    <div class="form-group">
       <table class="table table-bordered">
         <thead class="table-light">
           <tr>
@@ -18,28 +18,28 @@
         <tbody>
           <tr>
             <th scope="row">1週目</th>
-            <td><input type="text" class="form-control" name="comment1" value="{{ data.comment1 }}"></td>
-            <td><input type="text" class="form-control" name="template1" value="{{ data.template1 }}"></td>
+            <td>{{ form.comment1 }}</td>
+            <td>{{ form.template1 }}</td>
           </tr>
           <tr>
             <th scope="row">2週目</th>
-            <td><input type="text" class="form-control" name="comment2" value="{{ data.comment2 }}"></td>
-            <td><input type="text" class="form-control" name="template2" value="{{ data.template2 }}"></td>
+            <td>{{ form.comment2 }}</td>
+            <td>{{ form.template2 }}</td>
           </tr>
           <tr>
             <th scope="row">3週目</th>
-            <td><input type="text" class="form-control" name="comment3" value="{{ data.comment3 }}"></td>
-            <td><input type="text" class="form-control" name="template3" value="{{ data.template3 }}"></td>
+            <td>{{ form.comment3 }}</td>
+            <td>{{ form.template3 }}</td>
           </tr>
           <tr>
             <th scope="row">4週目</th>
-            <td><input type="text" class="form-control" name="comment4" value="{{ data.comment4 }}"></td>
-            <td><input type="text" class="form-control" name="template4" value="{{ data.template4 }}"></td>
+            <td>{{ form.comment4 }}</td>
+            <td>{{ form.template4 }}</td>
           </tr>
           <tr>
             <th scope="row">5週目</th>
-            <td><input type="text" class="form-control" name="comment5" value="{{ data.comment5 }}"></td>
-            <td><input type="text" class="form-control" name="template5" value="{{ data.template5 }}"></td>
+            <td>{{ form.comment5 }}</td>
+            <td>{{ form.template5 }}</td>
           </tr>
         </tbody>
       </table>
