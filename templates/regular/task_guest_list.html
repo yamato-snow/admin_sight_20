@@ -13,7 +13,7 @@
     <h2 class="text-success">vol.{{ item.vol }}　<a href="{{ item.guest_url }}" target="_blank">{{ item.guest }}</a>：{{ item.theme }}</h2>
     <h6>{{ item.day }}　<a href="{{ item.spreadsheet }}" target="_blank">質問スプシ</a></h6>
     <div class="mt-3">
-      <a href="{% url 'update-task' item.pk %}">詳細へ</a>
+      <a href="{% url 'update-task' item.pk %}">編集画面へ</a>
     </div>
   </div>
   {% endfor %}
