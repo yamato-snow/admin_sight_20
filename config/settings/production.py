@@ -1,34 +1,37 @@
 """
-本番環境用の Django 設定。
+Google App Engine (GAE) 向けの最小限の本番環境用 Django 設定。
 """
 
 from .base import *
 import os
 
+# デバッグモードを無効化
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '').split(',')
+# アプリケーションが動作可能なホストを指定
+ALLOWED_HOSTS = ['.appspot.com']
 
+# Google Cloud SQL with PostgreSQL の設定
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'HOST': '/cloudsql/' + os.getenv('INSTANCE_CONNECTION_NAME'),
+        'PORT': '5432',
     }
 }
 
-# セキュリティ関連の設定
-SECURE_SSL_REDIRECT = os.getenv('SECURE_SSL_REDIRECT', 'False') == 'True'
-SESSION_COOKIE_SECURE = os.getenv('SESSION_COOKIE_SECURE', 'False') == 'True'
-CSRF_COOKIE_SECURE = os.getenv('CSRF_COOKIE_SECURE', 'False') == 'True'
-SECURE_HSTS_SECONDS = int(os.getenv('SECURE_HSTS_SECONDS', '0'))
-SECURE_HSTS_INCLUDE_SUBDOMAINS = os.getenv('SECURE_HSTS_INCLUDE_SUBDOMAINS', 'False') == 'True'
-SECURE_HSTS_PRELOAD = os.getenv('SECURE_HSTS_PRELOAD', 'False') == 'True'
+# 静的ファイルの設定
+STATIC_ROOT = 'static'
+STATIC_URL = '/static/'
 
-# SECRET_KEYを環境変数から取得
+# セキュリティ設定
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# SECRET_KEY を環境変数から取得
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # ロギング設定
@@ -48,5 +51,9 @@ LOGGING = {
     },
 }
 
-# その他の本番環境固有の設定
-# ...
+
+# 環境変数のチェック
+REQUIRED_ENVS = ['DB_NAME', 'DB_USER', 'DB_PASSWORD', 'INSTANCE_CONNECTION_NAME', 'DJANGO_SECRET_KEY']
+for env in REQUIRED_ENVS:
+    if env not in os.environ:
+        raise Exception(f"Required environment variable {env} is not set.")
