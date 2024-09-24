@@ -1,0 +1,11 @@
+runtime: python310
+service: default
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: 'config.settings.production'
+
+handlers:
+- url: /static
+  static_dir: static/
+- url: /.*
+  script: auto
