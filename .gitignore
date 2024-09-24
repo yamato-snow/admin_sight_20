@@ -1,3 +1,4 @@
+app.yaml
 /.python-version
 /.venv
 .env
@@ -9,4 +10,3 @@
 **/db.sqlite3
 **/media
 **/.DS_Store
-app.yaml
