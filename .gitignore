@@ -1,6 +1,7 @@
 /.python-version
 /.venv
 .env
+config.txt
 **/.pyc
 **/__pycache__/
 **/*.log
