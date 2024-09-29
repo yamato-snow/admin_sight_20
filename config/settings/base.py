@@ -2,6 +2,7 @@
 構成プロジェクトの Django 共通設定。
 """
 
+import os
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -92,3 +93,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'index'
 
 LOGOUT_REDIRECT_URL = 'index'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

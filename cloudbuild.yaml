@@ -1,0 +1,9 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        gcloud app deploy
+        gcloud app instances list
+        gcloud app instances ssh [INSTANCE_ID] --service=[SERVICE_ID] --command "python manage.py migrate"
