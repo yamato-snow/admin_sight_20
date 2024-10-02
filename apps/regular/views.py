@@ -1,3 +1,4 @@
+import subprocess
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
@@ -10,6 +11,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
     )
+from django.http import HttpResponse
 from .models import Task, Standard, Guestalk
 from .consts import ITEM_PER_PAGE
 
@@ -26,10 +28,33 @@ class StandardTaskView(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):
         return Standard.objects.get(pk=1)
 
+#    def form_valid(self, form):
+#        form.instance.user = self.request.user
+#        return super().form_valid(form)
+
     def form_valid(self, form):
         form.instance.user = self.request.user
+        action = self.request.POST.get('action')
+
+        if action == 'execute':
+            # 定期実行ボタンが押された場合
+            try:
+                # subprocessでmain.pyを実行
+                subprocess.run(['python3', 'apps/regular/post/main.py', 'std'], check=True)
+                return HttpResponse('定期実行が成功しました。')
+            except subprocess.CalledProcessError:
+                return HttpResponse('定期実行でエラーが発生しました。', status=500)
+
+        elif action == 'update':
+            # 内容変更ボタンが押された場合
+            return super().form_valid(form)
+
+        elif action == 'cancel':
+            # 実行中止ボタンが押された場合
+            return HttpResponse('実行が中止されました。')
+
         return super().form_valid(form)
-    
+
 class GuestalkTaskView(LoginRequiredMixin, ListView):
     template_name = 'regular/task_guest_list.html'
     model = Guestalk

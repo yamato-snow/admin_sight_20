@@ -96,5 +96,5 @@ class PostStandard:
         self.driver.execute_script(script, text_box)
 
         # 送信ボタンをクリック
-        self.driver.find_element(By.XPATH, '//*[@id="my-toolbar"]/div[4]/button').click()
+        self.driver.find_element(By.XPATH, '//*[@id="message-toolbar"]/div[4]/button').click()
         time.sleep(2)
