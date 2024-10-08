@@ -4,19 +4,15 @@ import sys
 import time
 import django
 
-# Django の環境を設定（プロジェクトのルートパスに変更してください）
-sys.path.append('/Users/yoshino/Local/06_20_manager/admin_site/admin_sight_20')
-# 現在の作業ディレクトリを取得し、必要なパスを追加
-#root_directory = os.getcwd()
-#sys.path.append(os.path.join(root_directory, 'admin_sight_20'))
-
+# Django の環境を設定
+root_directory = os.getcwd()
+sys.path.append(root_directory)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'admin_sight_20.settings')
-
-# Django のセットアップ
 django.setup()
 
 # Django モデルのインポート
 from apps.regular.models import Standard
+from apps.regular.models import Guestalk
 
 # src ディレクトリ内のファイルをインポート
 from src.webdriver_setup import setup_webdriver
@@ -27,7 +23,6 @@ from src.post_guest_pre import PostGuestPre
 
 def main():
     # 構成ファイルにユーザー名、パスワード、カテゴリ URL などの必要な詳細が含まれている
-    root_directory = os.getcwd()
     config_file_path = os.path.join(root_directory, 'apps', 'regular', 'post', 'config', 'config.txt')
     config = read_config(config_file_path)
 
@@ -63,9 +58,34 @@ def main():
             post1.post(comment, theme, '6月21日')
 
         elif trigger == 'gst':
-            post1.post('回', 'ここにひとこと記入', 'https://libecity.com/user_profile/pJaiOmsWiWV62BR9GeydWww1Nqf2', 'ゲスト名', 'トーク内容', '⚪︎⚪︎', '6月21日')
+            # Guestalk モデルからデータを取得
+            guestalk_data = Guestalk.objects.get()  # 該当のIDデータを取得したい
+
+            # データベースを使用して post1.post を呼び出す
+            day_db = guestalk_data.day
+            vol_db = guestalk_data.vol
+            guest_db = guestalk_data.guest
+            guest_url_db = guestalk_data.guest_url
+            theme_db = guestalk_data.theme
+            comment_db = guestalk_data.comment
+            template_db = guestalk_data.template
+
+            # 取得したデータを使用して投稿
+            post1.post(vol_db, comment_db, guest_url_db, guest_db, theme_db, template_db, day_db)
         else:
-            post1.post('https://libecity.com/user_profile/pJaiOmsWiWV62BR9GeydWww1Nqf2', 'ゲスト名', 'トーク内容', 'ここにひとこと記入', '6月21日', 'https://docs.google.com/spreadsheets/d/1JJCSabTaMaUrPyh7vYhg-U1VLRlk3aYdkNJ0qwj2VE8/edit?usp=sharing')
+            # Guestalk モデルからデータを取得
+            guestalk_data = Guestalk.objects.get()  # 該当のIDデータを取得したい
+
+            # データベースを使用して post1.post を呼び出す
+            day_db = guestalk_data.day
+            guest_db = guestalk_data.guest
+            guest_url_db = guestalk_data.guest_url
+            theme_db = guestalk_data.theme
+            comment_db = guestalk_data.comment
+            spreadsheet_db = guestalk_data.spreadsheet
+
+            # 取得したデータを使用して投稿
+            post1.post(guest_url_db, guest_db, theme_db, comment_db, day_db, spreadsheet_db)
 
     finally:
         # 送信後に WebDriver が閉じられていることを確認
